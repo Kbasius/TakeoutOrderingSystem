@@ -91,37 +91,45 @@ def update_order(order, menu_selection, menu_items):
                     and quantity ordered (updated as needed).
     """
     # TODO: Check if the customer typed a number
-
         # TODO: Convert the menu selection to an integer
-
-
         # TODO: Check if the menu selection is in the menu items keys
-
             # TODO: Store the item name as a variable
-
-
             # TODO: Ask the customer for the quantity of the menu item
             # TODO: Use the item name variable in the question
-
-
             # TODO: Check if the quantity is a number, default to 1 if not
-
-
             # TODO: Add a dictionary to the order list 
             # TODO: The dictionary should include the item name, price, and quantity
             # TODO: Use the following names for the dictionary keys:
             # TODO: "Item name", "Price", "Quantity"
-
         # TODO: When the user's input isn't valid, 
         # TODO: tell the customer that their input isn't valid
-
     # TODO: When the menu selection wasn't valid:
     # TODO: Print the menu selection and 
     # TODO: Tell the customer they didn't select a menu option
+    if menu_selection.isdigit():
+        menu_selection = int(menu_selection)
+        if menu_selection in menu_items:
+            item_name = menu_items[menu_selection]["Item name"]
+            price = menu_items[menu_selection]["Price"]
 
+            quantity = input(f"How many {item_name} would you like to purchase?")
+            if not quantity.isdigit():
+                quantity = 1
+            else:
+                quantity = int(quantity)
+
+            order.append({
+                "Item name": item_name,
+                "Price" : price,
+                "Quantity" : quantity
+            })
+        else:
+            print("This menu item number does not exsist, Please try again.")
+    else:
+        print("This is not a number, Please try again.") 
 
     # TODO: Return the updated order
-
+    return order
 
 def print_itemized_receipt(receipt):
     """
