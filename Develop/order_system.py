@@ -42,7 +42,8 @@ def place_order(menu):
     while True:
         i = 1
         print_menu_heading()
-        for food_category, options in menu_items():
+        for food_category, options in menu_items.items():
+            food_category = str(food_category)
             for meal, price in options.items():
                 print_menu_line(i, food_category, meal, price)
                 i += 1
